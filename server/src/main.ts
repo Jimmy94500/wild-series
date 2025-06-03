@@ -1,5 +1,13 @@
+import type { RequestHandler } from "express";
+import express from "express";
+const router = express.Router();
+const sayWelcome: RequestHandler = (req, res) => {
+  res.json(["Welcome to Wild Series !"]);
+};
 
+router.get("/", sayWelcome);
 // Load environment variables from .env file
+
 import "dotenv/config";
 
 // Check database connection
@@ -21,4 +29,3 @@ app
   .on("error", (err: Error) => {
     console.error("Error:", err.message);
   });
-
