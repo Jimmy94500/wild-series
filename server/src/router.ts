@@ -1,16 +1,8 @@
-import type { RequestHandler } from "express";
 import express from "express";
-
-
 const router = express.Router();
-const sayWelcome: RequestHandler = (req, res) => {
-  res.json(["Welcome to Wild Series !"])
-}
 
 /* ************************************************************************* */
 // Define Your API Routes Here
-
-router.get("/", sayWelcome);
 /* ************************************************************************* */
 
 // Define item-related routes
