@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 
+type Program = {
+  id: number;
+  title: string;
+  poster: string;
+  synopsis: string;
+};
+
 function Programs() {
-  const [boitePrograms, setBoitePrograms] = useState([]);
+  const [boitePrograms, setBoitePrograms] = useState<Program[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:3310/api/programs")
@@ -12,7 +19,7 @@ function Programs() {
   return boitePrograms.map((unProgramRecup) => (
     <div key={unProgramRecup.id}>
       <h1>{unProgramRecup.title}</h1>
-      <img src={unProgramRecup.poster} />
+      <img src={unProgramRecup.poster} alt={unProgramRecup.title} />
       <h2>{unProgramRecup.synopsis}</h2>
     </div>
   ));
