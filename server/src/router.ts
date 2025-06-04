@@ -1,12 +1,21 @@
-import type { RequestHandler } from "express";
 import express from "express";
 const router = express.Router();
 
-const sayWelcome: RequestHandler = (req, res) => {
-  res.json(["Welcome to Wild Series !"]);
-};
 
-router.get("/", sayWelcome);
+
+/* ************************************************************************* */
+
+// Declaration of a "Welcome" route
+
+import sayActions from "./modules/say/sayActions";
+
+router.get("/", sayActions.sayWelcome);
+
+// QUETE 03 - JS MONOREPO : ROUTING
+
+import programActions from "./modules/program/programActions";
+
+router.get("/api/programs", programActions.browse)
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
