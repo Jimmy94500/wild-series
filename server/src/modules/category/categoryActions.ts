@@ -14,28 +14,28 @@ const categories = [
 
 // Declare the actions
 
-const browse: RequestHandler = (req,res) => {
-  if(req.query.q !=null) {
+const browse: RequestHandler = (req, res) => {
+  if (req.query.q != null) {
     const filteredCategories = categories.filter((uneCategorie) =>
-    uneCategorie.name.includes(req.query.q as string)
-  );
+      uneCategorie.name.includes(req.query.q as string),
+    );
 
-  res.json(filteredCategories);
-} else {
-  res.json(categories);
-}
+    res.json(filteredCategories);
+  } else {
+    res.json(categories);
   }
+};
 
-const read : RequestHandler = (req, res) => {
+const read: RequestHandler = (req, res) => {
   const parseId = Number.parseInt(req.params.id);
   const categorieId = categories.find((p) => p.id === parseId);
 
-  if(categorieId !=null) {
+  if (categorieId != null) {
     res.json(categorieId);
   } else {
-    res.sendStatus(404)
+    res.sendStatus(404);
   }
-  };
+};
 
 // Export them to import them somewhere else
 

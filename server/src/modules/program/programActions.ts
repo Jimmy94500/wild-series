@@ -30,7 +30,7 @@ import type { RequestHandler } from "express";
 const browse: RequestHandler = (req, res) => {
   if (req.query.q != null) {
     const filteredPrograms = programs.filter((program) =>
-      program.synopsis.includes(req.query.q as string)
+      program.synopsis.includes(req.query.q as string),
     );
 
     res.json(filteredPrograms);
@@ -50,7 +50,6 @@ const read: RequestHandler = (req, res) => {
     res.sendStatus(404);
   }
 };
-
 
 // Export them to import it somewhere else
 

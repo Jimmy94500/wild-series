@@ -25,9 +25,8 @@ router.get("/api/programs", programActions.browse);
 import categoryActions from "./modules/category/categoryActions";
 
 router.get("/api/programs/:id", programActions.read);
-router.get("/api/categories/", categoryActions.browse)
-router.get("/api/categories/:id", categoryActions.read)
-
+router.get("/api/categories/", categoryActions.browse);
+router.get("/api/categories/:id", categoryActions.read);
 
 // Declaration of a "Welcome" route
 
