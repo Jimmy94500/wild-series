@@ -4,7 +4,10 @@ import mysql from "mysql2/promise";
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-class ProgramRepository {
+class PprogramRepository {
+  readById(parsedId: number) {
+    throw new Error("Method not implemented.");
+  }
   private databaseClient;
 
   constructor() {
@@ -17,7 +20,7 @@ class ProgramRepository {
     });
   }
 
-  async readAll() {
+  async readAll(q: string | undefined) {
     const [rows] = await this.databaseClient.query("SELECT * FROM program");
     return rows;
   }
@@ -27,4 +30,4 @@ class ProgramRepository {
   }
 }
 
-export default new ProgramRepository();
+export default new PprogramRepository();

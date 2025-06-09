@@ -1,6 +1,6 @@
 // server/src/modules/program/programActions.ts
 import type { RequestHandler } from "express";
-import programRepository from "../program/programRepository";
+import programRepository from "../program/PprogramRepository";
 
 const browse: RequestHandler = async (req, res) => {
   try {
@@ -16,11 +16,14 @@ const browse: RequestHandler = async (req, res) => {
 const read: RequestHandler = async (req, res) => {
   const parsedId = Number.parseInt(req.params.id);
 
-  if (Number.isNaN(parsedId)) return res.sendStatus(400);
+  if (Number.isNaN(parsedId)) {
+    res.sendStatus(400);
+    return;
+  }
 
   try {
     const program = await programRepository.readById(parsedId);
-    if (program) {
+    if (program !== undefined && program !== null) {
       res.json(program);
     } else {
       res.sendStatus(404);
